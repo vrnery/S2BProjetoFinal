@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -16,55 +17,57 @@ namespace s2bProjeto.Models
         #endregion
         #region "construtores"
         public Usuario() { }
-        public Usuario (string nome)
+        /// <summary>
+        /// Construtor que recebe o nome
+        public Usuario(string nome)
         {
             this.Nome = nome;
         }
-        public Usuario (string nome, string email, string senha):this(nome)
-        {            
-            this.email = email;
-            this.senha = senha;
-        }
-        public Usuario (string nome, string email, string senha, Boolean adm, Boolean office): this(nome, email, senha)
+        /// <summary>
+        /// construtor que recebe nome, email e senha
+        /// </summary>
+        /// <param nome string="nome"></param>
+        /// <param email string="email"></param>
+        /// <param senha string="senha"></param>
+        public Usuario(string nome, string email, string senha) : this(nome)
         {
-            this.adm = adm;
-            this.office = office;
+            this.Email = email;
+            this.Senha = senha;
+        }
+        /// <summary>
+        /// construtor para todos atributos da classe Usuário (nome, email, senha se é administrador ou oficial)
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <param email="email"></param>
+        /// <param senha="senha"></param>
+        /// <param adiministrador true or false="adm"></param>
+        /// <param oficial true or false ="office"></param>
+        public Usuario(string nome, string email, string senha, Boolean adm, Boolean office) : this(nome, email, senha)
+        {
+            this.Adm = adm;
+            this.Office = office;
         }
         #endregion
         #region "métodos públicos"
+        [Required(ErrorMessage ="Nome é um campo obrigatório!")]
         public string Nome
         {
             get { return this.nome; }
-            set
-            {
-                //try
-                //{
-                if (value == null)
-                {
-                    throw new System.ArgumentException("Nome Invalido!");
-                }
-                else
-                {
-                    this.nome = value;
-                }
-                
-                    
+            set { this.nome = value; }
 
-                //}
-                //catch (Exception ex)
-                //{
-                    //throw ex;
-                //}
-            }
         }
-        public string Email {
-            get { return email;}
-            set { this.email = value;}
-            }
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "E-mail não é válido")]        
+        public string Email
+        {
+            get { return email; }
+            set { this.email = value; }
+            
+        }
+        [Required]
         public string Senha
         {
             get { return this.senha; }
-            set { this.senha = value; }
+            set { senha = value; }
         }
         public Boolean Adm {
             get { return this.adm; }
@@ -74,31 +77,7 @@ namespace s2bProjeto.Models
             get { return office; }
             set {this.office = value; }
           }
-               
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="nome"></param>
-        /// <param name="email"></param>
-        /// <param name="senha"></param>
-        public void validarUsuario (String nome, String email, String senha)
-        {
-            try
-            {
-                if(nome.Length > 2)
-                {
-                    this.nome = nome;
-                }
-                else
-                    
-                if(email.Contains("@"))
-                    this.email = email;
-            }
-            catch(Exception Erro)
-            {
-                throw Erro;
-            }
-        }
+                   
         #endregion
 
 
