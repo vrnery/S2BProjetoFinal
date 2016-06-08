@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Details</h2>===
 
 <div>
     <h4>Reclamacao</h4>
@@ -90,30 +90,31 @@
             @Html.DisplayFor(model => model.Imagem)
         </dd>
 
-        <dt>
-            <table class="table">
-                <tr>
-                    <th>
-                        Usuário:
-                    </th>
-                    <th>
-                        Comentário:
-                    </th>
-                </tr>
-               @foreach(var item in Model.Comentario)
-               {
-                   <tr>
-                       <td>
-                         @Html.DisplayFor(modelItem => item.Usuario.Nome)
-                       </td>
-                       <td>
-                           @Html.DisplayFor(modelItem => item.Descricao)
-                       </td>
-                   </tr>
-               }
-            </table>
-        </dt>
-    </dl>
+
+        <fieldset>
+            
+            <h4>Comentários</h4>
+            @foreach (var item in Model.Comentario)
+            {
+               
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(modelItem => item.Usuario.Nome)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                    </dd>
+                    <dt>
+                        @Html.DisplayNameFor(modelItem => item.Descricao)
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Descricao)
+                    </dd>
+                    </dl>
+                    <hr/>
+                    }
+</fieldset>
+
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ReclamacaoId }) |
