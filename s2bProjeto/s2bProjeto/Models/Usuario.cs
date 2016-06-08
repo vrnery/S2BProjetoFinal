@@ -20,6 +20,8 @@ namespace s2bProjeto.Models
         private ICollection<Comentario> comentarios;
         private Boolean adm;
         private Boolean office;
+        private byte[] foto;
+        private Boolean ativo;
         #endregion
         #region "construtores"
         public Usuario() { }
@@ -28,6 +30,7 @@ namespace s2bProjeto.Models
         public Usuario(string nome)
         {
             this.Nome = nome;
+            this.Ativo = true;
         }
         /// <summary>
         /// construtor que recebe nome, email e senha
@@ -52,6 +55,11 @@ namespace s2bProjeto.Models
         {
             this.Adm = adm;
             this.Office = office;
+        }
+        public Usuario(string nome, string email, string senha, Boolean adm, Boolean office, byte[] foto, Boolean ativo) : this(nome, email, senha, adm, office)
+        {
+            this.Foto = foto;
+            this.Ativo = ativo;
         }
         #endregion
         #region "métodos públicos"
@@ -102,6 +110,16 @@ namespace s2bProjeto.Models
             get { return office; }
             set {this.office = value; }
           }
+        public byte[] Foto
+        {
+            get { return this.foto; }
+            set { this.foto = value; }
+        }
+        public Boolean Ativo
+        {
+            get { return this.ativo; }
+            set { this.ativo = value; }
+        }
                    
         #endregion
 

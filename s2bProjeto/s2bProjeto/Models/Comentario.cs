@@ -11,7 +11,7 @@ namespace s2bProjeto.Models
     public class Comentario
     {
         #region "atributos"
-        private int idComentario;
+        private int comentarioId;
         private string descricao;
         private string imagem;
         private int reclamacaoId;
@@ -38,10 +38,10 @@ namespace s2bProjeto.Models
         #region "metodos publicos"
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int IdComentario
+        public int ComentarioId
         {
-            get { return idComentario; }
-            set { idComentario = value; }
+            get { return comentarioId; }
+            set { comentarioId = value; }
         }
         public string Descricao
         {

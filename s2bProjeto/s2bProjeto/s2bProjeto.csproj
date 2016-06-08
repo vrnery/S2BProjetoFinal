@@ -209,6 +209,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BancoInicializador.cs" />
+    <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Comentario.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -282,11 +284,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Usuario.cshtml" />
-    <Content Include="Views\Reclamacaos\Create.cshtml" />
-    <Content Include="Views\Reclamacaos\Delete.cshtml" />
-    <Content Include="Views\Reclamacaos\Details.cshtml" />
-    <Content Include="Views\Reclamacaos\Edit.cshtml" />
-    <Content Include="Views\Reclamacaos\Index.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
     <Content Include="Views\Usuarios\Details.cshtml" />
@@ -297,6 +294,11 @@
     <Content Include="Views\Comentarios\Details.cshtml" />
     <Content Include="Views\Comentarios\Edit.cshtml" />
     <Content Include="Views\Comentarios\Index.cshtml" />
+    <Content Include="Views\Reclamacaos\Create.cshtml" />
+    <Content Include="Views\Reclamacaos\Delete.cshtml" />
+    <Content Include="Views\Reclamacaos\Details.cshtml" />
+    <Content Include="Views\Reclamacaos\Edit.cshtml" />
+    <Content Include="Views\Reclamacaos\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

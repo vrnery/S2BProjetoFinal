@@ -17,7 +17,7 @@ namespace s2bProjeto.Controllers
         // GET: Reclamacaos
         public ActionResult Index()
         {
-            var reclamacoes = db.Reclamacoes.Include(r => r.Usuario);
+            var reclamacoes = db.Reclamacoes.Include(r => r.Categoria).Include(r => r.Usuario);
             return View(reclamacoes.ToList());
         }
 
@@ -39,6 +39,7 @@ namespace s2bProjeto.Controllers
         // GET: Reclamacaos/Create
         public ActionResult Create()
         {
+            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Titulo");
             ViewBag.UsuarioId = new SelectList(db.Usuarios, "UsuarioId", "Nome");
             return View();
         }
@@ -48,7 +49,7 @@ namespace s2bProjeto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ReclamacaoId,Titulo,Descricao,Data,Bairro,Logradouro,Numero,Cep,Imagem,UsuarioId")] Reclamacao reclamacao)
+        public ActionResult Create([Bind(Include = "ReclamacaoId,Titulo,Descricao,Data,Bairro,Logradouro,Numero,Cep,Imagem,UsuarioId,CategoriaId")] Reclamacao reclamacao)
         {
             if (ModelState.IsValid)
             {
@@ -57,6 +58,7 @@ namespace s2bProjeto.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Titulo", reclamacao.CategoriaId);
             ViewBag.UsuarioId = new SelectList(db.Usuarios, "UsuarioId", "Nome", reclamacao.UsuarioId);
             return View(reclamacao);
         }
@@ -73,6 +75,7 @@ namespace s2bProjeto.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Titulo", reclamacao.CategoriaId);
             ViewBag.UsuarioId = new SelectList(db.Usuarios, "UsuarioId", "Nome", reclamacao.UsuarioId);
             return View(reclamacao);
         }
@@ -82,7 +85,7 @@ namespace s2bProjeto.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ReclamacaoId,Titulo,Descricao,Data,Bairro,Logradouro,Numero,Cep,Imagem,UsuarioId")] Reclamacao reclamacao)
+        public ActionResult Edit([Bind(Include = "ReclamacaoId,Titulo,Descricao,Data,Bairro,Logradouro,Numero,Cep,Imagem,UsuarioId,CategoriaId")] Reclamacao reclamacao)
         {
             if (ModelState.IsValid)
             {
@@ -90,6 +93,7 @@ namespace s2bProjeto.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoriaId = new SelectList(db.Categorias, "CategoriaId", "Titulo", reclamacao.CategoriaId);
             ViewBag.UsuarioId = new SelectList(db.Usuarios, "UsuarioId", "Nome", reclamacao.UsuarioId);
             return View(reclamacao);
         }

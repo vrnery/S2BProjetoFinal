@@ -19,10 +19,12 @@ namespace s2bProjeto.Models
         private string logradouro;
         private int numero;
         private string cep;
-        private string imagem;
+        private byte[] imagem;
         private ICollection<Comentario> comentarios;
         private int usuarioId;
         private Usuario usuario;
+        private int categoriaId;
+        private Categoria categoria;
         #endregion
         #region "construtores"
         public Reclamacao() { }
@@ -48,7 +50,7 @@ namespace s2bProjeto.Models
         /// <param int numero="numero"></param>
         /// <param string cep="cep"></param>
         /// <param string imagem="imagem"></param>
-        public Reclamacao (string titulo, string descricao, DateTime data, string bairro, string logradouro, int numero, string cep, string imagem): this (titulo, descricao)
+        public Reclamacao (string titulo, string descricao, DateTime data, string bairro, string logradouro, int numero, string cep, byte[] imagem): this (titulo, descricao)
         {
             Data = data;
             Bairro = bairro;
@@ -108,7 +110,7 @@ namespace s2bProjeto.Models
             get { return cep; }
             set { this.cep = value; }
         }
-        public string Imagem
+        public byte[] Imagem
         {
             get { return imagem; }
             set { this.imagem = value; }
@@ -129,6 +131,18 @@ namespace s2bProjeto.Models
         {
             get { return usuario; }
             set { usuario = value; }
+        }
+        public int CategoriaId
+        {
+            get { return categoriaId; }
+            set { categoriaId = value; }
+        }
+        [ForeignKey("CategoriaId")]
+        [Column(Order = 1)]
+        public virtual Categoria Categoria
+        {
+            get { return categoria; }
+            set { categoria = value; }
         }
         #endregion
     }

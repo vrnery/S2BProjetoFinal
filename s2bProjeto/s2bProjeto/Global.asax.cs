@@ -1,4 +1,5 @@
-﻿using System;
+﻿using s2bProjeto.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace s2bProjeto
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-          
+            Database.SetInitializer(new BancoInicializador());
         }
     }
 }
