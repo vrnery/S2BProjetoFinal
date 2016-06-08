@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace s2bProjeto.Models
 {
+    [Table ("RECLAMACAO") ]
     public class Reclamacao
     {
         #region "atributos"
+        private int reclamacaoId;
         private string titulo;
         private string descricao;
         private DateTime data;
@@ -17,6 +20,9 @@ namespace s2bProjeto.Models
         private int numero;
         private string cep;
         private string imagem;
+        private ICollection<Comentario> comentarios;
+        private int usuarioId;
+        private Usuario usuario;
         #endregion
         #region "construtores"
         public Reclamacao() { }
@@ -54,6 +60,13 @@ namespace s2bProjeto.Models
         }
         #endregion
         #region "métodos públicos"
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ReclamacaoId
+        {
+            get { return reclamacaoId; }
+            set { this.reclamacaoId = value; }
+        }
         [Required]
         public string Titulo
         {
@@ -89,7 +102,7 @@ namespace s2bProjeto.Models
             get { return numero; }
             set { this.numero = value; }
         }
-        [RegularExpression  (@"^[(]{1}\d{2}[)]{1}\d{4}[-]{1}\d{4}$", ErrorMessage = "Cep Inválido") ]
+        [RegularExpression  (@"^\d{5}-\d{3}$", ErrorMessage = "Cep Inválido") ]
         public string Cep
         {
             get { return cep; }
@@ -99,6 +112,23 @@ namespace s2bProjeto.Models
         {
             get { return imagem; }
             set { this.imagem = value; }
+        }
+        public virtual ICollection<Comentario> Comentario
+        {
+            get { return comentarios; }
+            set { comentarios = value; }
+        }
+        public int UsuarioId
+        {
+           get { return usuarioId; }
+           set { usuarioId = value; }
+     }
+        [ForeignKey("UsuarioId")]
+        [Column(Order = 1)]
+        public virtual Usuario Usuario
+        {
+            get { return usuario; }
+            set { usuario = value; }
         }
         #endregion
     }

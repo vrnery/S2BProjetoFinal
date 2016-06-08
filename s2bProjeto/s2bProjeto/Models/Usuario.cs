@@ -1,17 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace s2bProjeto.Models
 {
+    [Table ("USUARIO")]
     public class Usuario
     {
         #region "atributos"
+        private int usuarioId;
         private string nome;
         private string email;
         private string senha;
+        [InverseProperty("UsuarioId")]
+        private ICollection<Reclamacao> reclamacoes;
+        private ICollection<Comentario> comentarios;
         private Boolean adm;
         private Boolean office;
         #endregion
@@ -49,6 +55,13 @@ namespace s2bProjeto.Models
         }
         #endregion
         #region "métodos públicos"
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int UsuarioId
+        {
+            get { return usuarioId; }
+            set { this.usuarioId = value; }
+        }
         [Required(ErrorMessage ="Nome é um campo obrigatório!")]
         public string Nome
         {
@@ -69,6 +82,18 @@ namespace s2bProjeto.Models
             get { return this.senha; }
             set { senha = value; }
         }
+        public virtual ICollection <Comentario> Comentarios
+        {
+            get { return comentarios; }
+            set { comentarios = value; }
+        }
+        public virtual ICollection <Reclamacao> Reclamacoes
+        {
+            get { return reclamacoes; }
+            set { reclamacoes = value; }
+        }
+       
+
         public Boolean Adm {
             get { return this.adm; }
             set { this.adm = value; }
