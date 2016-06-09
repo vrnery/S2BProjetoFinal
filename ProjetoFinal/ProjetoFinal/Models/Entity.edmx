@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_ProjetoFinalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DB_ProjetoFinalModelStoreContainer">
+    <EntitySet Name="Table1" EntityType="DB_ProjetoFinalModel.Store.Table1" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Table2" EntityType="DB_ProjetoFinalModel.Store.Table2" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Table3" EntityType="DB_ProjetoFinalModel.Store.Table3" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Table4" EntityType="DB_ProjetoFinalModel.Store.Table4" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Table1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="C1" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Table2">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="C2" Type="int" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Table3">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="C6" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="C3" Type="int" Nullable="true" />
+    <Property Name="C6" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Table4">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="C4" Type="int" Nullable="true" />
+    <Property Name="C5" Type="int" Nullable="true" />
+  </EntityType>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_ProjetoFinalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DB_ProjetoFinalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Table1" EntityType="DB_ProjetoFinalModel.Table1" />
+          <EntitySet Name="Table2" EntityType="DB_ProjetoFinalModel.Table2" />
+          <EntitySet Name="Table3" EntityType="DB_ProjetoFinalModel.Table3" />
+          <EntitySet Name="Table4" EntityType="DB_ProjetoFinalModel.Table4" />
+        </EntityContainer>
+        <EntityType Name="Table1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="C1" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table2">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="C2" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Table3">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="C6" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="C3" Type="Int32" />
+          <Property Name="C6" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table4">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="C4" Type="Int32" />
+          <Property Name="C5" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DB_ProjetoFinalModelStoreContainer" CdmEntityContainer="DB_ProjetoFinalEntities">
+    <EntitySetMapping Name="Table1">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_ProjetoFinalModel.Table1)">
+        <MappingFragment StoreEntitySet="Table1">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="C1" ColumnName="C1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table2">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_ProjetoFinalModel.Table2)">
+        <MappingFragment StoreEntitySet="Table2">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="C2" ColumnName="C2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table3">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_ProjetoFinalModel.Table3)">
+        <MappingFragment StoreEntitySet="Table3">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="C6" ColumnName="C6" />
+          <ScalarProperty Name="C3" ColumnName="C3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Table4">
+      <EntityTypeMapping TypeName="IsTypeOf(DB_ProjetoFinalModel.Table4)">
+        <MappingFragment StoreEntitySet="Table4">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="C4" ColumnName="C4" />
+          <ScalarProperty Name="C5" ColumnName="C5" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

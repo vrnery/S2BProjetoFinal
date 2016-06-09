@@ -25,12 +25,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                   <li><a href="@Url.Action("Index", "Home", new {area="Admin"})">Admin</a></li>
-                    <li><a href="@Url.Action("Index", "Home", new {area="Usuario"})">Usuário</a></li> 
-                    <li>@Html.ActionLink("Reclame", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Minhas Reclamações", "About", "Home")</li>
-                    <li>@Html.ActionLink("Veja todas reclamações", "Contact", "Home")</li>
-                </ul>
+                    <li>@Html.ActionLink("Admin", "Index", "Usuarios")</li>
+                    <li>@Html.ActionLink("Reclamações", "Index", "Reclamacaos")</li>
+                    <li>@Html.ActionLink("Nova reclamação", "Create", "Reclamacaos")</li>
                 @Html.Partial("_LoginPartial")
             </div>
             <!-- /.navbar-collapse -->
@@ -49,9 +46,9 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Admin", "Index", "Usuarios")</li>
+                    <li>@Html.ActionLink("Reclamações", "Index", "Reclamacaos")</li>
+                    <li>@Html.ActionLink("Nova reclamação", "Create", "Reclamacaos")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

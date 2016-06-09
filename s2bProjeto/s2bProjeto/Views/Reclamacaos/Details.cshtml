@@ -1,0 +1,123 @@
+﻿@model s2bProjeto.Models.Reclamacao
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>===
+
+<div>
+    <h4>Reclamacao</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Titulo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Nome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Nome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descricao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Data)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Data)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bairro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bairro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Logradouro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Logradouro)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Numero)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Numero)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Cep)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cep)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagemFile)
+        </dt>
+        <dd>
+            @if (Model.ImagemUrl != null)
+            {
+                <img width="200" src="@Model.ImagemUrl" alt="@Model.Titulo" />
+            }
+            else if (Model.ImagemFile != null)
+            {
+                <img src="@Url.Action("GetImage", "Reclamacao", new {id=Model.ReclamacaoId})" alt="" />
+            }
+            else
+            {
+                @:url image not available
+            }
+        </dd>
+
+    </dl>
+
+    <h4>Comentários</h4>
+    
+    <fieldset>
+    
+        <dl class="dl-horizontal">
+        
+            @foreach (var item in Model.Comentario)
+            {
+
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.Usuario.Nome)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(modelItem => item.Descricao)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </dd>
+
+            }
+
+        </dl>
+        
+    </fieldset>
+
+</div>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ReclamacaoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
