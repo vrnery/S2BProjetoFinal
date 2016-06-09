@@ -1,8 +1,9 @@
-﻿@{
+﻿@model IEnumerable<s2bProjeto.Models.Reclamacao>
+
+@{
     ViewBag.Title = "Home Page";
-
+}
 <style>
-
     body,
     html {
         width: 100%;
@@ -17,36 +18,66 @@
         background: url(../img/poa.jpg) no-repeat center center;
         background-size: cover;
     }
+
     .intro-message {
-    position: relative;
-    padding-top: 20%;
-    padding-bottom: 20%;
-}
+        position: relative;
+        padding-top: 20%;
+        padding-bottom: 20%;
+    }
 
-.intro-message > h1 {
-    margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-    font-size: 5em;
-}
+        .intro-message > h1 {
+            margin: 0;
+            text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+            font-size: 5em;
+        }
 
-.intro-divider {
-    width: 400px;
-    border-top: 1px solid #f8f8f8;
-    border-bottom: 1px solid rgba(0,0,0,0.2);
-}
+    .intro-divider {
+        width: 400px;
+        border-top: 1px solid #f8f8f8;
+        border-bottom: 1px solid rgba(0,0,0,0.2);
+    }
 
-.intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
-}
-
-
+    .intro-message > h3 {
+        text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    }
 </style>
 <div class="intro-header">
     <h1>Vamos cuidar nossa cidade?</h1>
     <p class="lead">Publique os problemas da nossa cidade para que possamos cobrar a resolução!</p>
-    
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h2>Getting started</h2>
+    </div>
+    <div class="text-center">
+        <table class="table">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Usuario.Nome)</th>
+                <th>@Html.DisplayNameFor(model => model.Titulo)</th>
+                <th>@Html.DisplayNameFor(model => model.Descricao)</th>
+                <th>@Html.DisplayNameFor(model => model.Data)</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.ActionLink(item.Usuario.Nome, "Details", "Reclamacaos", new { id = item.ReclamacaoId }, "")
+                    </th>
+                    <th>
+                        @Html.ActionLink(item.Titulo, "Details", "Reclamacaos", new { id = item.ReclamacaoId }, "")
+                    </th>
+                    <th>
+                        @Html.ActionLink(item.Descricao, "Details", "Reclamacaos", new { id = item.ReclamacaoId }, "")
+                    </th>
+                    <th>
+                        @Html.ActionLink(item.Data.ToShortDateString(), "Details", "Reclamacaos", new { id = item.ReclamacaoId }, "")
+                    </th>
+                </tr>
+            }
+        </table>
+    </div>
 </div>
     <div id="map">
         <h1>Mapa</h1>
     </div>
-}
+
